@@ -42,7 +42,7 @@
 
     /* NAV (full width) */
     .navbar{
-      position:fixed; top:0; left:0; right:0; height:64px; z-index:50;
+      position:fixed; top:0; left:0; right:0; height:64px; z-index:60;
       background:rgba(252,247,243,.96); backdrop-filter:blur(16px);
       border-bottom:1px solid rgba(234,215,199,.8); transition:var(--tr)
     }
@@ -54,6 +54,14 @@
     .brand{display:flex;align-items:center;gap:.75rem;text-decoration:none}
     .brand img{height:40px;width:auto}
     .brand span{font-family:var(--font-serif);letter-spacing:.16em;text-transform:uppercase;color:var(--hazelnut-800);font-size:1rem}
+
+    .nav-right{display:flex; align-items:center; gap:1rem;}
+    .top-social{display:flex; align-items:center; gap:.5rem;}
+    .top-social a{display:inline-flex; align-items:center; text-decoration:none}
+    .top-social svg{width:22px;height:22px}
+    .top-social .wa{filter: drop-shadow(0 0 0 rgba(0,0,0,0));}
+    .top-social .ig{border-radius:50%}
+
     .nav-menu{list-style:none;display:flex;gap:1.1rem;align-items:center}
     .nav-link{font-size:.9rem;color:var(--muted);text-decoration:none;letter-spacing:.14em;text-transform:uppercase;position:relative;padding-bottom:.2rem;transition:var(--tr)}
     .nav-link::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--primary);transition:var(--tr)}
@@ -64,6 +72,28 @@
       box-shadow:0 8px 24px rgba(59,30,20,.25);transition:var(--tr)
     }
     .nav-cta:hover{background:var(--hazelnut-700);transform:translateY(-1px)}
+
+    /* Botón hamburguesa */
+    .hamburger{
+      display:none; width:42px; height:42px; border-radius:10px;
+      border:1px solid rgba(234,215,199,.9); background:#fff;
+      align-items:center; justify-content:center; cursor:pointer;
+    }
+
+    /* Panel móvil */
+    .mobile-panel{
+      position:fixed; inset:64px 0 auto 0; background:#fff; z-index:55;
+      border-top:1px solid rgba(234,215,199,.9);
+      transform:translateY(-6px) scale(.98); opacity:0; pointer-events:none;
+      transition:var(--tr);
+      box-shadow:0 20px 40px rgba(0,0,0,.08);
+    }
+    .mobile-panel.open{transform:none; opacity:1; pointer-events:auto;}
+    .mobile-inner{padding:1rem 1rem 1.25rem}
+    .mobile-links{display:grid; gap:.4rem; list-style:none; margin:.5rem 0 1rem}
+    .mobile-links a{display:block; padding:.8rem 1rem; border-radius:10px; text-decoration:none; color:var(--hazelnut-800); border:1px solid rgba(234,215,199,.9)}
+    .mobile-cta{display:block; text-align:center; margin-top:.25rem}
+    .mobile-social{display:flex; gap:.75rem; align-items:center; padding-top:.25rem}
 
     /* HERO fullscreen */
     .full-hero{
@@ -82,7 +112,7 @@
     .btn-secondary{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
     .btn-secondary:hover{background:rgba(255,255,255,.12)}
 
-    /* --- QR flotante en el HERO --- */
+    /* QR flotante en el HERO */
     .hero-qr-cta{
       position:absolute; right:28px; bottom:28px; z-index:3;
       display:flex; gap:12px; align-items:center; text-decoration:none;
@@ -106,7 +136,7 @@
     .section-subtitle{color:var(--muted);max-width:680px;margin:0 auto 1rem}
     .alt{background:var(--hazelnut-100)}
 
-    /* Flecha (SVG) hacia abajo entre apartados */
+    /* Flecha hacia abajo */
     .down-arrow{display:flex; justify-content:center; margin-top:1.5rem;}
     .down-arrow a{
       display:inline-flex; align-items:center; justify-content:center;
@@ -115,7 +145,6 @@
       transition:var(--tr); text-decoration:none;
     }
     .down-arrow a:hover{ transform:translateY(2px); }
-    .down-arrow .icon{width:20px;height:20px}
 
     /* Apertura */
     .apertura{padding:4rem 0}
@@ -136,7 +165,6 @@
     .benefit{display:flex;gap:.8rem;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:18px;padding:1.1rem;box-shadow:var(--shadow)}
     .benefit h4{font-family:var(--font-serif);font-size:1.08rem;color:var(--hazelnut-800);margin-bottom:.2rem}
     .benefit p{color:var(--muted)}
-    .benefit .icon{width:20px;height:20px;margin-top:.15rem;color:var(--hazelnut-700)}
 
     /* Equipo */
     .team-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem}
@@ -146,8 +174,6 @@
     .contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:1.5rem}
     .contact-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:1.2rem;box-shadow:var(--shadow)}
     .contact-item{display:flex;gap:.65rem;margin:.6rem 0;align-items:center}
-    .contact-item .icon{color:var(--hazelnut-700)}
-    .contact-item strong{display:block}
     .input, textarea, select{width:100%;padding:.7rem .8rem;border-radius:10px;border:1px solid rgba(154,118,96,.6);background:var(--hazelnut-50);font-family:var(--font-sans);font-size:.95rem;color:var(--text);transition:var(--tr)}
     textarea{min-height:110px;resize:vertical}
     .input:focus, textarea:focus, select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 1px rgba(91,48,31,.2);background:#fff}
@@ -167,10 +193,12 @@
     /* Responsive */
     @media (max-width:960px){
       .nav-menu{display:none}
+      .hamburger{display:inline-flex}
       section{padding:4rem 0}
       .apertura-grid,.services-grid,.benefits-grid,.team-grid,.contact-grid{grid-template-columns:1fr}
       .hero-qr-cta{ left:50%; right:auto; transform:translateX(-50%); bottom:18px; }
       .nav-inner{padding:.6rem .8rem}
+      .top-social{display:none} /* iconos arriba sólo en desktop; en móvil van dentro del panel */
     }
     @media (max-width:420px){
       .hero-qr-cta img{ width:56px; height:56px; }
@@ -185,15 +213,22 @@
       <symbol id="icon-arrow-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M12 5v14"/><path d="m19 12-7 7-7-7"/>
       </symbol>
+      <!-- Menu / Close -->
+      <symbol id="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 6h18M3 12h18M3 18h18"/>
+      </symbol>
+      <symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6 6 18M6 6l12 12"/>
+      </symbol>
       <!-- Dumbbell -->
       <symbol id="icon-dumbbell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M6.5 6.5v11M3 9v6M21 9v6M17.5 6.5v11M9 12h6"/>
       </symbol>
-      <!-- Activity (onda cardiaca) -->
+      <!-- Activity -->
       <symbol id="icon-activity" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M22 12h-4l-3 7-6-14-3 7H2"/>
       </symbol>
-      <!-- Usuario/check (personal) -->
+      <!-- User check -->
       <symbol id="icon-user-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M8 21a6 6 0 1 1 8 0"/><circle cx="12" cy="7" r="4"/><path d="m15.5 16.5 2 2 3.5-3.5"/>
       </symbol>
@@ -202,10 +237,8 @@
         <circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v4M2 12h4M20 12h4M12 20v4"/>
       </symbol>
       <!-- Bolt -->
-      <symbol id="icon-bolt" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/>
-      </symbol>
-      <!-- Flex (movilidad) -->
+      <symbol id="icon-bolt" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></symbol>
+      <!-- Flex -->
       <symbol id="icon-flex" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M4 12h16M8 8l-4 4 4 4M16 8l4 4-4 4"/>
       </symbol>
@@ -215,7 +248,7 @@
       </symbol>
       <!-- Battery -->
       <symbol id="icon-battery" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <rect x="1" y="7" width="18" height="10" rx="2"/><path d="M23 11v2"/><rect x="3" y="9" width="10" height="6" />
+        <rect x="1" y="7" width="18" height="10" rx="2"/><path d="M23 11v2"/><rect x="3" y="9" width="10" height="6"/>
       </symbol>
       <!-- Brain -->
       <symbol id="icon-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -233,7 +266,7 @@
       <symbol id="icon-map-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M12 21s-6-5.33-6-10a6 6 0 1 1 12 0c0 4.67-6 10-6 10z"/><circle cx="12" cy="11" r="2.5"/>
       </symbol>
-      <!-- Instagram (gradiente) -->
+      <!-- Instagram -->
       <symbol id="icon-instagram" viewBox="0 0 512 512">
         <defs>
           <radialGradient id="ig-grad" cx="50%" cy="50%" r="70%">
@@ -261,7 +294,9 @@
         <img src="LogoMarron.jpg" alt="Core Fit Studio" onerror="this.style.display='none'">
         <span>Core Fit Studio</span>
       </a>
-      <nav aria-label="Navegación principal">
+
+      <nav aria-label="Navegación principal" class="nav-right">
+        <!-- Enlaces (desktop) -->
         <ul class="nav-menu">
           <li><a class="nav-link" href="#home">Inicio</a></li>
           <li><a class="nav-link" href="#apertura">Apertura</a></li>
@@ -271,7 +306,45 @@
           <li><a class="nav-link" href="#contacto">Contacto</a></li>
           <li><a class="nav-cta" href="#qr">Inscríbete ahora</a></li>
         </ul>
+
+        <!-- Iconos arriba (desktop) -->
+        <div class="top-social" aria-label="Redes">
+          <a class="ig" href="https://instagram.com/core_fit_studio" target="_blank" rel="noopener noreferrer" title="@core_fit_studio">
+            <svg class="icon" viewBox="0 0 512 512"><use href="#icon-instagram"/></svg>
+          </a>
+          <a class="wa" href="https://wa.me/34694280795" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+            <svg class="icon" viewBox="0 0 512 512"><use href="#icon-whatsapp"/></svg>
+          </a>
+        </div>
+
+        <!-- Botón hamburguesa (móvil) -->
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+          <svg class="icon"><use id="hamburgerIcon" href="#icon-menu"/></svg>
+        </button>
       </nav>
+    </div>
+
+    <!-- Panel móvil -->
+    <div class="mobile-panel" id="mobilePanel" aria-hidden="true">
+      <div class="mobile-inner">
+        <ul class="mobile-links">
+          <li><a href="#home">Inicio</a></li>
+          <li><a href="#apertura">Apertura</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#beneficios">Beneficios</a></li>
+          <li><a href="#equipo">Equipo</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <a class="nav-cta mobile-cta" href="#qr">Inscríbete ahora</a>
+        <div class="mobile-social" aria-label="Redes">
+          <a class="ig" href="https://instagram.com/core_fit_studio" target="_blank" rel="noopener noreferrer" title="@core_fit_studio">
+            <svg class="icon"><use href="#icon-instagram"/></svg>
+          </a>
+          <a class="wa" href="https://wa.me/34694280795" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+            <svg class="icon"><use href="#icon-whatsapp"/></svg>
+          </a>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -279,7 +352,7 @@
   <main>
     <section id="home" class="full-hero" role="region" aria-label="Portada">
       <div class="hero-content">
-        <h1 class="hero-title">Conecta con tu <span>core</span>. Fortalece todo tu cuerpo.</h1>
+        <h1 class="hero-title">Activa tu <span>centro</span>, Enciende tu <span>energía</span>.</h1>
         <p class="hero-text">Pilates Reformer, entrenamiento funcional y personal para moverte mejor, ganar fuerza real y vivir sin dolor. Grupos reducidos. Atención cercana. Resultados que se sienten.</p>
         <div class="hero-bullets">
           <span>✔ Postura & Core</span><span>✔ Movilidad & Fuerza</span><span>✔ Bienestar duradero</span>
@@ -415,30 +488,12 @@
           <p class="section-subtitle">Resultados que notas dentro y fuera del estudio.</p>
         </div>
         <div class="benefits-grid">
-          <div class="benefit">
-            <svg class="icon"><use href="#icon-target"/></svg>
-            <div><h4>Postura y alineación</h4><p>Reeducamos patrones y fortalecemos la musculatura postural para aliviar cargas y mejorar tu presencia.</p></div>
-          </div>
-          <div class="benefit">
-            <svg class="icon"><use href="#icon-bolt"/></svg>
-            <div><h4>Core fuerte</h4><p>Mayor estabilidad, equilibrio y control en cada movimiento. Tu base para todo.</p></div>
-          </div>
-          <div class="benefit">
-            <svg class="icon"><use href="#icon-flex"/></svg>
-            <div><h4>Movilidad real</h4><p>Rango articular saludable y flexibilidad útil para una vida más ligera.</p></div>
-          </div>
-          <div class="benefit">
-            <svg class="icon"><use href="#icon-shield"/></svg>
-            <div><h4>Prevención de lesiones</h4><p>Entrenamiento inteligente con técnica precisa y progresiones seguras.</p></div>
-          </div>
-          <div class="benefit">
-            <svg class="icon"><use href="#icon-battery"/></svg>
-            <div><h4>Energía y bienestar</h4><p>Más vitalidad, menos estrés y mejor descanso para tu día a día.</p></div>
-          </div>
-          <div class="benefit">
-            <svg class="icon"><use href="#icon-brain"/></svg>
-            <div><h4>Mente enfocada</h4><p>Respiración y control que calman la mente y mejoran la concentración.</p></div>
-          </div>
+          <div class="benefit"><svg class="icon"><use href="#icon-target"/></svg><div><h4>Postura y alineación</h4><p>Reeducamos patrones y fortalecemos la musculatura postural para aliviar cargas y mejorar tu presencia.</p></div></div>
+          <div class="benefit"><svg class="icon"><use href="#icon-bolt"/></svg><div><h4>Core fuerte</h4><p>Mayor estabilidad, equilibrio y control en cada movimiento. Tu base para todo.</p></div></div>
+          <div class="benefit"><svg class="icon"><use href="#icon-flex"/></svg><div><h4>Movilidad real</h4><p>Rango articular saludable y flexibilidad útil para una vida más ligera.</p></div></div>
+          <div class="benefit"><svg class="icon"><use href="#icon-shield"/></svg><div><h4>Prevención de lesiones</h4><p>Entrenamiento inteligente con técnica precisa y progresiones seguras.</p></div></div>
+          <div class="benefit"><svg class="icon"><use href="#icon-battery"/></svg><div><h4>Energía y bienestar</h4><p>Más vitalidad, menos estrés y mejor descanso para tu día a día.</p></div></div>
+          <div class="benefit"><svg class="icon"><use href="#icon-brain"/></svg><div><h4>Mente enfocada</h4><p>Respiración y control que calman la mente y mejoran la concentración.</p></div></div>
         </div>
 
         <div class="down-arrow" aria-hidden="true">
@@ -474,14 +529,6 @@
             <h3 style="font-family:var(--font-serif);color:var(--hazelnut-800)">Federica — Pilates, Funcional & Personal</h3>
             <p style="color:var(--muted)">Licenciada en CAFD, con Máster en Poblaciones Especiales y Máster en Formación del Profesorado. Mi base en ballet, junto con la especialización en Pilates y Entrenamiento Funcional, me permite trabajar con técnica, control corporal y atención a necesidades específicas de cada persona.</p>
           </article>
-          
-		  <!-- Próximos miembros 
-		  <article class="member">
-            <h3 style="font-family:var(--font-serif);color:var(--hazelnut-800)">Silvia — Pilates & Yoga</h3>
-            <p style="color:var(--muted)">Entrenador personal especializado en fuerza y movimiento funcional seguro.</p>
-          </article>
-		  -->
-		  
         </div>
 
         <div class="down-arrow" aria-hidden="true">
@@ -502,74 +549,33 @@
 
         <div class="contact-grid">
           <div class="contact-card">
-            <div class="contact-item">
-              <svg class="icon"><use href="#icon-phone"/></svg>
-              <div>
-                <strong>WhatsApp</strong>
-                <p><a href="https://wa.me/34694280795" target="_blank" rel="noopener noreferrer" style="color:var(--hazelnut-800);text-decoration:none">+34 694 280 795</a></p>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <svg class="icon"><use href="#icon-mail"/></svg>
-              <div>
-                <strong>Email</strong>
-                <p><a href="mailto:corefitstudio.laflota@gmail.com" style="color:var(--hazelnut-800);text-decoration:none">corefitstudio.laflota@gmail.com</a></p>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <svg class="icon"><use href="#icon-map-pin"/></svg>
-              <div>
-                <strong>Dirección</strong>
-                <p>Calle Navegante Macías de Poyo, 7 · La Flota · Murcia</p>
-              </div>
-            </div>
+            <div class="contact-item"><svg class="icon"><use href="#icon-phone"/></svg><div><strong>WhatsApp</strong><p><a href="https://wa.me/34694280795" target="_blank" rel="noopener noreferrer" style="color:var(--hazelnut-800);text-decoration:none">+34 694 280 795</a></p></div></div>
+            <div class="contact-item"><svg class="icon"><use href="#icon-mail"/></svg><div><strong>Email</strong><p><a href="mailto:corefitstudio.laflota@gmail.com" style="color:var(--hazelnut-800);text-decoration:none">corefitstudio.laflota@gmail.com</a></p></div></div>
+            <div class="contact-item"><svg class="icon"><use href="#icon-map-pin"/></svg><div><strong>Dirección</strong><p>Calle Navegante Macías de Poyo, 7 · La Flota · Murcia</p></div></div>
 
             <!-- Mapa embebido -->
             <div class="contact-item" style="display:block; width:100%; margin-top:.8rem">
               <strong>Cómo llegar</strong>
               <div style="margin-top:.5rem; border:1px solid var(--hazelnut-200); border-radius:12px; overflow:hidden;">
-                <iframe
-                  title="Mapa — Core Fit Studio"
-                  width="100%" height="320" style="border:0; display:block"
-                  loading="lazy" allowfullscreen
-                  referrerpolicy="no-referrer-when-downgrade"
-                  src="https://www.google.com/maps?q=Calle%20Navegante%20Mac%C3%ADas%20de%20Poyo%2C%207%2C%20Murcia&output=embed">
-                </iframe>
+                <iframe title="Mapa — Core Fit Studio" width="100%" height="320" style="border:0; display:block" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Calle%20Navegante%20Mac%C3%ADas%20de%20Poyo%2C%207%2C%20Murcia&output=embed"></iframe>
               </div>
-              <p style="margin-top:.4rem">
-                <a href="https://maps.app.goo.gl/f64AyvpTDrMRUr6b7" target="_blank" rel="noopener" style="color:var(--hazelnut-800)">Abrir en Google Maps</a>
-              </p>
+              <p style="margin-top:.4rem"><a href="https://maps.app.goo.gl/f64AyvpTDrMRUr6b7" target="_blank" rel="noopener" style="color:var(--hazelnut-800)">Abrir en Google Maps</a></p>
             </div>
 
             <div class="contact-item" style="align-items:flex-start">
               <svg class="icon"><use href="#icon-instagram"/></svg>
-              <div>
-                <strong>Instagram</strong>
-                <p style="margin-top:.1rem"><a href="https://instagram.com/core_fit_studio" target="_blank" rel="noopener noreferrer" style="color:var(--hazelnut-800);text-decoration:none">@core_fit_studio</a></p>
-              </div>
+              <div><strong>Instagram</strong><p style="margin-top:.1rem"><a href="https://instagram.com/core_fit_studio" target="_blank" rel="noopener noreferrer" style="color:var(--hazelnut-800);text-decoration:none">@core_fit_studio</a></p></div>
             </div>
           </div>
 
           <div class="contact-card">
             <h3 style="font-family:var(--font-serif);color:var(--hazelnut-800);margin-bottom:.6rem;">Escríbenos</h3>
-            <!-- Form funcional: abre el cliente de correo del usuario con el mensaje preparado -->
+            <!-- Form funcional: abre el cliente de correo del usuario -->
             <form id="contactForm">
-              <div class="contact-item" style="display:block">
-                <label for="name">Nombre</label>
-                <input class="input" id="name" name="name" type="text" placeholder="Tu nombre" required>
-              </div>
-              <div class="contact-item" style="display:block">
-                <label for="email">Email</label>
-                <input class="input" id="email" name="email" type="email" placeholder="tu@email.com" required>
-              </div>
-              <div class="contact-item" style="display:block">
-                <label for="phone">Teléfono</label>
-                <input class="input" id="phone" name="phone" type="tel" placeholder="Opcional">
-              </div>
-              <div class="contact-item" style="display:block">
-                <label for="service">Servicio de interés</label>
+              <div class="contact-item" style="display:block"><label for="name">Nombre</label><input class="input" id="name" name="name" type="text" placeholder="Tu nombre" required></div>
+              <div class="contact-item" style="display:block"><label for="email">Email</label><input class="input" id="email" name="email" type="email" placeholder="tu@email.com" required></div>
+              <div class="contact-item" style="display:block"><label for="phone">Teléfono</label><input class="input" id="phone" name="phone" type="tel" placeholder="Opcional"></div>
+              <div class="contact-item" style="display:block"><label for="service">Servicio de interés</label>
                 <select id="service" name="service" class="input">
                   <option value="">Selecciona un servicio</option>
                   <option value="Pilates Reformer">Pilates Reformer</option>
@@ -577,20 +583,10 @@
                   <option value="Entrenamiento Personal">Entrenamiento Personal</option>
                 </select>
               </div>
-              <div class="contact-item" style="display:block">
-                <label for="message">Mensaje</label>
-                <textarea id="message" name="message" placeholder="Cuéntanos en qué podemos ayudarte" class="input"></textarea>
-              </div>
+              <div class="contact-item" style="display:block"><label for="message">Mensaje</label><textarea id="message" name="message" placeholder="Cuéntanos en qué podemos ayudarte" class="input"></textarea></div>
               <button type="submit" class="btn btn-primary" style="width:100%">Enviar</button>
-              <p style="font-size:.9rem;color:var(--soft);margin-top:.6rem">
-                *Este formulario abrirá tu aplicación de correo para enviar el mensaje a <strong>corefitstudio.laflota@gmail.com</strong>.
-              </p>
-              <noscript>
-                <p style="margin-top:.6rem">
-                  Si prefieres, escribe directamente a
-                  <a href="mailto:corefitstudio.laflota@gmail.com?subject=Consulta%20desde%20la%20web%20Core%20Fit%20Studio" style="color:var(--hazelnut-800)">corefitstudio.laflota@gmail.com</a>.
-                </p>
-              </noscript>
+              <p style="font-size:.9rem;color:var(--soft);margin-top:.6rem">*Este formulario abrirá tu aplicación de correo para enviar el mensaje a <strong>corefitstudio.laflota@gmail.com</strong>.</p>
+              <noscript><p style="margin-top:.6rem">Si prefieres, escribe directamente a <a href="mailto:corefitstudio.laflota@gmail.com?subject=Consulta%20desde%20la%20web%20Core%20Fit%20Studio" style="color:var(--hazelnut-800)">corefitstudio.laflota@gmail.com</a>.</p></noscript>
             </form>
           </div>
         </div>
@@ -601,7 +597,6 @@
   <!-- FOOTER -->
   <footer class="footer" role="contentinfo">
     <div class="footer-inner">
-      <!-- Logo encima de las redes -->
       <div class="footer-logo">
         <img src="LogoBlanco.jpg" alt="Core Fit Studio" onerror="this.onerror=null;this.src='LogoMarron.jpg'">
       </div>
@@ -633,6 +628,8 @@
       a.addEventListener('click',e=>{
         const t=document.querySelector(a.getAttribute('href'));
         if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
+        // Si estamos en móvil, cerrar el panel al navegar
+        closeMobile();
       });
     });
 
@@ -666,6 +663,33 @@
       const body = encodeURIComponent(bodyLines.join('\n'));
       const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
       window.location.href = mailto;
+    });
+
+    // Toggle menú móvil
+    const burger = document.getElementById('hamburger');
+    const burgerIcon = document.getElementById('hamburgerIcon');
+    const panel = document.getElementById('mobilePanel');
+
+    const openMobile = () => {
+      panel.classList.add('open');
+      panel.setAttribute('aria-hidden','false');
+      burgerIcon.setAttribute('href','#icon-x');
+      burger.setAttribute('aria-label','Cerrar menú');
+    };
+    const closeMobile = () => {
+      panel.classList.remove('open');
+      panel.setAttribute('aria-hidden','true');
+      burgerIcon.setAttribute('href','#icon-menu');
+      burger.setAttribute('aria-label','Abrir menú');
+    };
+
+    burger.addEventListener('click', () => {
+      panel.classList.contains('open') ? closeMobile() : openMobile();
+    });
+
+    // Cerrar si se redimensiona a desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 960) closeMobile();
     });
   </script>
 </body>
