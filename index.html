@@ -192,12 +192,7 @@
     .footer-logo img{max-width:220px;height:auto}
     .social{display:flex;gap:.75rem;justify-content:center;align-items:center;margin:.6rem 0}
     .footer small{opacity:.8}
-
-    /* Ocultar horarios y su enlace */
-    #horarios{display:none !important;}
-    .nav-menu a[href="#horarios"]{display:none !important;}
-
-    /* Responsive */
+/* Responsive */
     @media (max-width:960px){
       .nav-menu{display:none}
       .hamburger{display:inline-flex}
@@ -306,9 +301,9 @@
         <!-- Enlaces (desktop) -->
         <ul class="nav-menu">
           <li><a class="nav-link" href="#home">Inicio</a></li>
-          <li><a class="nav-link" href="#apertura">Apertura</a></li>
-          <li><a class="nav-link" href="#servicios">Servicios</a></li>
+<li><a class="nav-link" href="#servicios">Servicios</a></li>
           <li><a class="nav-link" href="#beneficios">Beneficios</a></li>
+          <li><a class="nav-link" href="#horarios">Horario</a></li>
           <li><a class="nav-link" href="#equipo">Equipo</a></li>
           <li><a class="nav-link" href="#contacto">Contacto</a></li>
           <li><a class="nav-cta" href="#qr">Inscríbete ahora</a></li>
@@ -336,9 +331,9 @@
       <div class="mobile-inner">
         <ul class="mobile-links">
           <li><a href="#home">Inicio</a></li>
-          <li><a href="#apertura">Apertura</a></li>
-          <li><a href="#servicios">Servicios</a></li>
+<li><a href="#servicios">Servicios</a></li>
           <li><a href="#beneficios">Beneficios</a></li>
+          <li><a href="#horarios">Horario</a></li>
           <li><a href="#equipo">Equipo</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
@@ -376,54 +371,21 @@
          target="_blank" rel="noopener noreferrer" aria-label="Inscripción gratuita en diciembre">
         <img src="qr-inscripcion-diciembre.png" alt="QR Inscripción Core Fit Studio (diciembre)"/>
         <span class="qr-text">
-          <strong>Inscripción gratuita</strong>
-          <span>Durante diciembre</span>
+          <strong>Inscríbete ahora</strong>
+          <span></span>
         </span>
       </a>
 
       <!-- Flecha SVG -->
       <div class="down-arrow" aria-hidden="true">
-        <a href="#apertura" title="Ir a Apertura">
+        <a href="#sobre" title="Ir a Sobre nosotros">
           <svg class="icon"><use href="#icon-arrow-down"/></svg>
         </a>
       </div>
     </section>
 
-    <!-- APERTURA -->
-    <section id="apertura" class="apertura alt">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">¡Gran Apertura!</h2>
-          <p class="section-subtitle">Estrena estudio con nosotros. Oferta de lanzamiento y plazas limitadas.</p>
-        </div>
-
-        <div class="apertura-grid">
-          <div class="flyer-card">
-            <h3 style="font-family:var(--font-serif);color:var(--hazelnut-800);margin-bottom:.6rem;">Folleto de apertura</h3>
-            <p style="color:var(--muted);margin-bottom:1rem;">Primera clase gratuita. Pilates Reformer en máquina, funcional (grupos reducidos) y entrenamiento personal.</p>
-            <img src="folleto_apertura.png" alt="Folleto de apertura Core Fit Studio" class="flyer-image"/>
-          </div>
-
-          <div class="qr-card" id="qr">
-            <h3 style="font-family:var(--font-serif);color:var(--hazelnut-800);margin-bottom:.6rem;">Inscripción gratuita en diciembre</h3>
-            <p style="color:var(--muted)">Escanea el código o pulsa el botón para inscribirte gratis durante el mes de diciembre.</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdk6VGbckfl1ZnBYLWUf-Zy0XuOa6ibJ7_D8Xip8AIzFRNg2A/viewform" target="_blank" rel="noopener noreferrer">
-              <img src="qr-inscripcion-diciembre.png" alt="QR Inscripciones Core Fit Studio (diciembre)" class="qr-code"/>
-            </a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdk6VGbckfl1ZnBYLWUf-Zy0XuOa6ibJ7_D8Xip8AIzFRNg2A/viewform" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-              Inscríbete ahora
-            </a>
-            <p style="margin-top:.6rem;color:var(--soft);font-size:.92rem;">*Promoción válida durante diciembre.</p>
-          </div>
-        </div>
-
-        <div class="down-arrow" aria-hidden="true">
-          <a href="#sobre" title="Ir a Sobre nosotros">
-            <svg class="icon"><use href="#icon-arrow-down"/></svg>
-          </a>
-        </div>
-      </div>
-    </section>
+    <!-- Anchor para el QR (QR flotante en portada) -->
+    <div id="qr" style="position:relative; top:-72px; height:1px;"></div>
 
     <!-- SOBRE -->
     <section id="sobre">
@@ -511,15 +473,28 @@
       </div>
     </section>
 
-    <!-- HORARIOS (oculto por CSS) -->
-    <section id="horarios" class="alt" aria-hidden="true">
+    <!-- HORARIOS -->
+    <section id="horarios" class="alt">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Horarios</h2>
-          <p class="section-subtitle">Consulta disponibilidad por WhatsApp.</p>
+          <h2 class="section-title">Horario</h2>
+          <p class="section-subtitle">Consulta nuestro horario semanal y elige el turno que mejor se adapte a ti.</p>
         </div>
-        <div class="contact-card">
-          <p>Esta sección está oculta temporalmente.</p>
+
+        <div class="contact-card" style="padding:1rem;">
+          <img src="Horarios-Core-Fit-2026.png" alt="Horario semanal Core Fit Studio" style="width:100%; height:auto; border-radius:16px; border:1px solid var(--hazelnut-200);"/>
+          <p style="margin-top:.9rem; color:var(--muted); text-align:center;">
+            ¿Dudas o quieres reservar? Escríbenos por WhatsApp y te ayudamos.
+          </p>
+          <p style="text-align:center; margin-top:.5rem">
+            <a class="btn btn-primary" href="https://wa.me/34694280795" target="_blank" rel="noopener noreferrer">Reservar por WhatsApp</a>
+          </p>
+        </div>
+
+        <div class="down-arrow" aria-hidden="true">
+          <a href="#equipo" title="Ir a Equipo">
+            <svg class="icon"><use href="#icon-arrow-down"/></svg>
+          </a>
         </div>
       </div>
     </section>
