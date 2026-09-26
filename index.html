@@ -112,7 +112,20 @@
     .btn-secondary{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
     .btn-secondary:hover{background:rgba(255,255,255,.12)}
 
-    /* Botón para normas (Opción B) */
+    /* Botón WhatsApp */
+    .btn-wa {
+      background: #25D366;
+      color: #fff;
+      border-color: #25D366;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.28);
+    }
+    .btn-wa:hover {
+      background: #1da851;
+      border-color: #1da851;
+      color: #fff;
+    }
+
+    /* Botón para normas */
     .btn-normas {
       display: inline-flex;
       align-items: center;
@@ -170,7 +183,7 @@
       margin:0 auto;
     }
 
-    /* Modal Visor Normas (Opción B) */
+    /* Modal Visor Normas */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -274,6 +287,10 @@
       <symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M18 6 6 18M6 6l12 12"/>
       </symbol>
+      <symbol id="icon-smartphone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+        <line x1="12" y1="18" x2="12.01" y2="18"/>
+      </symbol>
       <symbol id="icon-dumbbell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <path d="M6.5 6.5v11M3 9v6M21 9v6M17.5 6.5v11M9 12h6"/>
       </symbol>
@@ -342,6 +359,7 @@
         <!-- Enlaces (desktop) -->
         <ul class="nav-menu">
           <li><a class="nav-link" href="#home">Inicio</a></li>
+          <li><a class="nav-link" href="#sobre">Sobre Nosotros</a></li>
           <li><a class="nav-link" href="#servicios">Servicios</a></li>
           <li><a class="nav-link" href="#beneficios">Beneficios</a></li>
           <li><a class="nav-link" href="#horarios">Horario</a></li>
@@ -371,6 +389,7 @@
       <div class="mobile-inner">
         <ul class="mobile-links">
           <li><a href="#home">Inicio</a></li>
+          <li><a href="#sobre">Sobre Nosotros</a></li>
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#beneficios">Beneficios</a></li>
           <li><a href="#horarios">Horario</a></li>
@@ -402,13 +421,6 @@
           <a class="btn btn-primary" href="https://wa.me/34694280795" target="_blank" rel="noopener noreferrer">Reservar por WhatsApp</a>
           <a href="#servicios" class="btn btn-secondary" style="margin-left:.6rem">Explorar servicios</a>
         </div>
-      </div>
-
-      <!-- Flecha SVG -->
-      <div class="down-arrow" aria-hidden="true">
-        <a href="#sobre" title="Ir a Sobre nosotros">
-          <svg class="icon"><use href="#icon-arrow-down"/></svg>
-        </a>
       </div>
     </section>
 
@@ -535,22 +547,22 @@
                 <span style="color: var(--primary); font-weight: bold;">•</span>
                 <span>A los nuevos clientes se aplicará una matrícula única de <strong>10 €</strong>.</span>
               </li>
-			  <li style="display: flex; gap: .6rem; align-items: flex-start;">
+              <li style="display: flex; gap: .6rem; align-items: flex-start;">
                 <span style="color: var(--primary); font-weight: bold;">•</span>
                 <span>Consulta el reglamento general, normas de asistencia y políticas de cancelación.</span>
               </li>               
-                  <!-- Botón Modal Emergente (Opción B) -->
-                  <button type="button" id="openNormasModal" class="btn-normas">
-                    <svg class="icon"><use href="#icon-file-text"/></svg>
-                    <span>Ver Normas del Studio</span>
-                  </button>
+              <!-- Botón Modal Emergente -->
+              <button type="button" id="openNormasModal" class="btn-normas">
+                <svg class="icon"><use href="#icon-file-text"/></svg>
+                <span>Ver Normas del Studio</span>
+              </button>
             </ul>
           </div>
 
           <!-- DESTACADO APP LORARI DE RESERVAS -->
           <div style="margin-top: 1.5rem; background: #fff; border: 2px solid var(--hazelnut-600); border-radius: 16px; padding: 1.5rem; text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,0.06);">
-            <div style="display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; background: var(--hazelnut-100); border-radius: 50%; color: var(--hazelnut-800); margin-bottom: 0.6rem;">
-              <svg class="icon icon-lg"><use href="#icon-smartphone"/></svg>
+            <div style="display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; background: var(--hazelnut-100); border-radius: 50%; color: var(--hazelnut-800); margin-bottom: 0.6rem;">
+              <svg class="icon icon-lg" style="width:28px;height:28px;"><use href="#icon-smartphone"/></svg>
             </div>
             <h3 style="font-family: var(--font-serif); color: var(--hazelnut-800); font-size: 1.3rem; margin-bottom: 0.4rem;">
               Reserva y gestiona tus clases desde la App
@@ -558,12 +570,13 @@
             <p style="color: var(--muted); font-size: 0.95rem; max-width: 620px; margin: 0 auto 1.2rem;">
               A través de nuestra plataforma en <strong>Lorari</strong> puedes consultar plazas disponibles en tiempo real, apuntarte a tus sesiones o gestionar cancelaciones de forma cómoda desde tu móvil.
             </p>
-            <div style="display:flex; gap:0.8rem; justify-content:center; flex-wrap:wrap;">
+            <div style="display:flex; gap:0.8rem; justify-content:center; flex-wrap:wrap; align-items:center;">
               <a href="https://www.lorari.com/t/corefit" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="display:inline-flex; align-items:center; gap:0.5rem;">
                 <svg class="icon" style="width:20px;height:20px;fill:none;stroke:currentColor"><use href="#icon-smartphone"/></svg>
                 Acceder a la App (Lorari)
               </a>
-              <a class="btn btn-wa" href="https://wa.me/34694280795" target="_blank" rel="noopener noreferrer">
+              <a class="btn btn-wa" href="https://wa.me/34694280795" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:0.5rem;">
+                <svg class="icon" viewBox="0 0 512 512" style="width:20px;height:20px;"><use href="#icon-whatsapp"/></svg>
                 Consultar por WhatsApp
               </a>
             </div>
@@ -659,7 +672,7 @@
     </section>
   </main>
 
-  <!-- MODAL NORMAS (Opción B) -->
+  <!-- MODAL NORMAS -->
   <div id="normasModal" class="modal-overlay" aria-hidden="true" role="dialog" aria-label="Normas Core Fit Studio">
     <div class="modal-content">
       <button type="button" id="closeNormasModal" class="modal-close" aria-label="Cerrar normas">
@@ -765,7 +778,7 @@
       if (window.innerWidth > 960) closeMobile();
     });
 
-    // Modal Visor Normas (Opción B)
+    // Modal Visor Normas
     const normasBtn = document.getElementById('openNormasModal');
     const normasModal = document.getElementById('normasModal');
     const closeNormasBtn = document.getElementById('closeNormasModal');
